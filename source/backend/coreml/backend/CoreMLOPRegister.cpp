@@ -19,6 +19,8 @@ extern void ___CoreMLActivation__OpType_ELU__();
 extern void ___CoreMLActivation__OpType_PReLU__();
 extern void ___CoreMLActivation__OpType_Sigmoid__();
 extern void ___CoreMLActivation__OpType_Softmax__();
+extern void ___CoreMLWhile__OpType_While__();
+extern void ___CoreMLGatherV2__OpType_GatherV2__();
 
 void registerCoreMLOps() {
 ___CoreMLReduction__OpType_Reduction__();
@@ -40,5 +42,7 @@ ___CoreMLActivation__OpType_ELU__();
 ___CoreMLActivation__OpType_PReLU__();
 ___CoreMLActivation__OpType_Sigmoid__();
 ___CoreMLActivation__OpType_Softmax__();
+___CoreMLWhile__OpType_While__();
+___CoreMLGatherV2__OpType_GatherV2__();
 }
-}
+} // namespace MNN
