@@ -119,6 +119,19 @@ public:
         }
         return default_value;
     }
+    std::vector<int64_t> value(const char* key, const std::vector<int64_t>& default_value) const {
+        if (document.HasMember(key)) {
+            const auto& value = document[key];
+            if (value.IsArray()) {
+                std::vector<int64_t> result;
+                for (auto& v : value.GetArray()) {
+                    result.push_back(v.GetInt64());
+                }
+                return result;
+            }
+        }
+        return default_value;
+    }
     std::vector<int> value(const char* key, const std::vector<int>& default_value) const {
         if (document.HasMember(key)) {
             const auto& value = document[key];
@@ -317,6 +330,10 @@ public:
 
     std::string prompt_template() const {
         return llm_config_.value("prompt_template", "");
+    }
+
+    std::vector<int64_t> tie_embeddings() const {
+        return llm_config_.value("tie_embeddings", std::vector<int64_t>{});
     }
     // llm model config end >
 };
